@@ -9,7 +9,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name][contenthash].js",
-    clean: true
+    clean: true,
+    assetModuleFilename: "[name][ext]",
   },
   module: {
     rules: [
@@ -18,14 +19,18 @@ module.exports = {
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
-          test:/\.js$/,
-          use:{
-              loader:'babel-loader',
-              options:{
-                  presets:['@babel/preset-env']
-              }
-          }
-      }
+        test: /\.js$/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"],
+          },
+        },
+      },
+      {
+        test: /\.(jpg|jpeg|svg|png)$/i,
+        type: "asset/resource",
+      },
     ],
   },
   plugins: [
@@ -35,7 +40,7 @@ module.exports = {
       template: "src/template.html",
     }),
   ],
-  devtool: 'source-map',
+  devtool: "source-map",
   devServer: {
     static: {
       directory: path.resolve(__dirname, "dist"),

@@ -111,4 +111,20 @@ we can use it in the browser devtools sources tab
 npm i -D babel-loader @babel/core @babel/preset-env
 configure it under module: rules: in wc.js
 
-## assets
+## a) assets
+
+no need to install a loader, coz webpack comes with a asset_resource_loader
+define it under the module: rules:
+test: /\.(jpg|jpeg|svg|png)$/i,
+and type: 'asset/resource'
+
+## b) under output, [name][ext] for images and other files
+
+otherwise the file will be renamed while building
+add assetModuleFilename: '[name][ext]'
+
+## we can set images in the html
+
+import img from '../fn.png';
+const variab = doc.getElbyId('id_from_html') {no src in html}
+variab.src=img;
