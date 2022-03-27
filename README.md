@@ -36,17 +36,27 @@ default filename is main.js
 we made it bundle.js
 
 ## we can have multiple entry points ref bundle below
+
 change it to an object
 
 entry:{
-    bundle:'',
-    name2:''
-}
-## access them as name
-output:{
-    filename: [name].js
+bundle:'',
+name2:''
 }
 
-multiple files are genereated with this if there are any in the entry object
+## access them as name
+
+output:{
+filename: [name].js
+}
+
+multiple files are genereated with this if there more entries in the entry object
+
+## Loaders => images, js, css, saas: webpack Compiles them
+npm i -D sass style-loader sass-loader css-loader
+import the css
+
+add a module object and rules arrayoob in wc.js
+add a regex to detect the extension /\.scss$/
 
 
