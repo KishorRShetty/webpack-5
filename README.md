@@ -53,6 +53,7 @@ filename: [name].js
 multiple files are genereated with this if there more entries in the entry object
 
 ## Loaders => images, js, css, saas: webpack Compiles them
+
 npm i -D sass style-loader sass-loader css-loader
 import the css
 
@@ -60,6 +61,7 @@ add a module object and rules arrayoob in wc.js
 add a regex to detect the extension /\.scss$/
 
 ## HTML plugin : plugin's are more powerful.
+
 we can delete the whole dist folder and have a template
 npm run build wil create everything
 npm i -D html-webpack-plugin
@@ -71,7 +73,13 @@ create a plugin array -> HtmlwebPackPlugin takes {}
 now we can delete the dist and everything will be created on build
 
 ## Add a template to persist the html
+
 build will replace the html otherwise
 remove the script
 we can use <%=htmlWebpackPlugon.options.[] %> to access the template values
+
 <title><%=htmlWebpackPlugin.options.title %></title>
+
+## hashing for caching the js. hash changes on every build
+add [contenthash], now the js filename will have a hash
+filename: "[name][contenthash].js",
