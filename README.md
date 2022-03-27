@@ -126,5 +126,13 @@ add assetModuleFilename: '[name][ext]'
 ## we can set images in the html
 
 import img from '../fn.png';
-const variab = doc.getElbyId('id_from_html') {no src in html}
+const variab = doc.getElbyId('id_from_html') {give an id, no src in html}
 variab.src=img;
+
+## Bundle Analyzer plugin (import slightly diff)
+shows what our app is built from, what takes more space ...
+npm i -D webpack-bundle-analyzer
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer".BundleAnalyzerPlugin);
+finally pass it in the plugin: in wc.js
+
+it will open a webpage with all the usage in port 8888 and show all the details
