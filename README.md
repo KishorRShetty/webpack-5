@@ -81,14 +81,34 @@ we can use <%=htmlWebpackPlugon.options.[] %> to access the template values
 <title><%=htmlWebpackPlugin.options.title %></title>
 
 ## hashing for caching the js. hash changes on every build
+
 add [contenthash], now the js filename will have a hash
 filename: "[name][contenthash].js",
 
 ## auto reload
+
 add "dev":"webpack serve" in pkg
 and type YES for the below prompt
-    `Would you like to install 'webpack-dev-server' package?`
+`Would you like to install 'webpack-dev-server' package?`
+
 ## configure the devServer
+
 specify the directory
 open, reload the browser window compress etc
 
+## prevent multiple js creation on modifying the js src code
+
+clean: true in the output obj
+
+## show the error line : helps to debug in f12
+
+devtool: 'source-map'
+we will get a .js.map file in the dist folder
+we can use it in the browser devtools sources tab
+
+## backward-compatibility (old browsers) babel use if required
+
+npm i -D babel-loader @babel/core @babel/preset-env
+configure it under module: rules: in wc.js
+
+## assets

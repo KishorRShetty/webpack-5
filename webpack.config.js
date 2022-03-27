@@ -9,6 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name][contenthash].js",
+    clean: true
   },
   module: {
     rules: [
@@ -16,6 +17,15 @@ module.exports = {
         test: /\.scss$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
+      {
+          test:/\.js$/,
+          use:{
+              loader:'babel-loader',
+              options:{
+                  presets:['@babel/preset-env']
+              }
+          }
+      }
     ],
   },
   plugins: [
@@ -25,6 +35,7 @@ module.exports = {
       template: "src/template.html",
     }),
   ],
+  devtool: 'source-map',
   devServer: {
     static: {
       directory: path.resolve(__dirname, "dist"),
