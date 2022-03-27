@@ -1,45 +1,52 @@
-**Edit a file, create a new file, and clone from Bitbucket in under 2 minutes**
+## Notes
 
-When you're done, you can delete the content in this README and update the file with details for others getting started with your repository.
+src and dist in the begining
+created html in the dist and js in src and linked the js
 
-*We recommend that you open this README in another tab as you perform the tasks below. You can [watch our video](https://youtu.be/0ocf7u76WSo) for a full demo of all the steps in this tutorial. Open the video in a new tab to avoid leaving Bitbucket.*
+## npm init
 
----
+for import export, we can use type:module in package.json.
+webpack will take care of that here.
 
-## Edit a file
+## install webpack
 
-You’ll start by editing this README file to learn how to edit a file in Bitbucket.
+-D for installing as a dev dependancy
+npm i -D webpack webpack-cli
 
-1. Click **Source** on the left side.
-2. Click the README.md link from the list of files.
-3. Click the **Edit** button.
-4. Delete the following text: *Delete this line to make a change to the README from Bitbucket.*
-5. After making your change, click **Commit** and then **Commit** again in the dialog. The commit page will open and you’ll see the change you just made.
-6. Go back to the **Source** page.
+## configuring the webpack
 
----
+add "build":"webpack" under scripts in the package.json
+also add "build":"webpack --mode production" until the webpack.config file is created
 
-## Create a file
+## test it
 
-Next, you’ll add a new file to this repository.
+npm run build
+index.js was the original file in the src
+main.js is created in the dist folder
 
-1. Click the **New file** button at the top of the **Source** page.
-2. Give the file a filename of **contributors.txt**.
-3. Enter your name in the empty file space.
-4. Click **Commit** and then **Commit** again in the dialog.
-5. Go back to the **Source** page.
+## Create the webpack.config.js
 
-Before you move on, go ahead and explore the repository. You've already seen the **Source** page, but check out the **Commits**, **Branches**, and **Settings** pages.
+module.export={} it
+add mode:'developement' here and remove --mode production from package.json (webpack will now reference this from now)
 
----
+## change the default values if required
 
-## Clone a repository
+change the entry, output filename etc in webpack.config.js
+default filename is main.js
+we made it bundle.js
 
-Use these steps to clone from SourceTree, our client for using the repository command-line free. Cloning allows you to work on your files locally. If you don't yet have SourceTree, [download and install first](https://www.sourcetreeapp.com/). If you prefer to clone from the command line, see [Clone a repository](https://confluence.atlassian.com/x/4whODQ).
+## we can have multiple entry points ref bundle below
+change it to an object
 
-1. You’ll see the clone button under the **Source** heading. Click that button.
-2. Now click **Check out in SourceTree**. You may need to create a SourceTree account or log in.
-3. When you see the **Clone New** dialog in SourceTree, update the destination path and name if you’d like to and then click **Clone**.
-4. Open the directory you just created to see your repository’s files.
+entry:{
+    bundle:'',
+    name2:''
+}
+## access them as name
+output:{
+    filename: [name].js
+}
 
-Now that you're more familiar with your Bitbucket repository, go ahead and add a new file locally. You can [push your change back to Bitbucket with SourceTree](https://confluence.atlassian.com/x/iqyBMg), or you can [add, commit,](https://confluence.atlassian.com/x/8QhODQ) and [push from the command line](https://confluence.atlassian.com/x/NQ0zDQ).
+multiple files are genereated with this if there are any in the entry object
+
+
